@@ -312,9 +312,9 @@ class GoCart {
         const removeFromCart = document.querySelectorAll(this.removeFromCart);
         removeFromCart.forEach((item) => {
             item.addEventListener('click', () => {
-                GoCart.removeItemAnimation(item.parentNode);
-                const line = item.parentNode.getAttribute('data-line');
-                this.removeItem(line);
+                const lineItem = item.closest('[data-line]');
+                GoCart.removeItemAnimation(lineItem);
+                this.removeItem(lineItem.getAttribute('data-line'));
             });
         });
         const itemQuantityPlus = document.querySelectorAll(this.itemQuantityPlus);

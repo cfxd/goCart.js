@@ -3,7 +3,7 @@ import {formatMoney} from '@shopify/theme-currency/currency';
 import {getSizedImageUrl} from '@shopify/theme-images';
 import 'whatwg-fetch';
 import serialize from 'form-serialize';
-import Handlebars from 'handlebars';
+import Handlebars, { template } from 'handlebars';
 
 class GoCart {
 
@@ -237,6 +237,7 @@ class GoCart {
     cartItemCount(cart) {
         this.cartCount.forEach((item, index) => {
             item.innerHTML = cart.item_count;
+            item.setAttribute('data-count', cart.item_count);
         });
     }
 

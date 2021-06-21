@@ -3,7 +3,7 @@ import {formatMoney} from '@shopify/theme-currency/currency';
 import {getSizedImageUrl} from '@shopify/theme-images';
 import 'whatwg-fetch';
 import serialize from 'form-serialize';
-import Handlebars, { template } from 'handlebars';
+import Handlebars, {template} from 'handlebars';
 
 class GoCart {
 
@@ -323,7 +323,7 @@ class GoCart {
         const itemQuantityPlus = document.querySelectorAll(this.itemQuantityPlus);
         itemQuantityPlus.forEach((item) => {
             item.addEventListener('click', () => {
-                const line = item.parentNode.parentNode.parentNode.parentNode.getAttribute('data-line');
+                const line = item.closest('[data-line]').getAttribute('data-line');
                 const quantity = Number(item.parentNode.querySelector(this.itemQuantity).value) + 1;
                 this.changeItemQuantity(line, quantity);
             });
@@ -331,7 +331,7 @@ class GoCart {
         const itemQuantityMinus = document.querySelectorAll(this.itemQuantityMinus);
         itemQuantityMinus.forEach((item) => {
             item.addEventListener('click', () => {
-                const line = item.parentNode.parentNode.parentNode.parentNode.getAttribute('data-line');
+                const line = item.closest('[data-line]').getAttribute('data-line');
                 const quantity = Number(item.parentNode.querySelector(this.itemQuantity).value) - 1;
                 this.changeItemQuantity(line, quantity);
                 if (Number((item.parentNode.querySelector(this.itemQuantity).value - 1)) === 0) {

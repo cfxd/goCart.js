@@ -413,10 +413,18 @@ class GoCart {
 
     openCartDrawer() {
         this.cartDrawer.classList.add('is-open');
+        document.body.classList.toggle('cart-drawer-open');
+
+        const event = new Event('cart-drawer-open');
+        document.body.dispatchEvent(event);
     }
 
     closeCartDrawer() {
         this.cartDrawer.classList.remove('is-open');
+        document.body.classList.toggle('cart-drawer-open');
+
+        const event = new Event('cart-drawer-close');
+        document.body.dispatchEvent(event);
     }
 
     openMiniCart() {

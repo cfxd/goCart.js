@@ -56,7 +56,7 @@ class GoCart {
         this.cartDrawerContent = document.querySelector(this.defaults.cartDrawerContent);
         this.cartDrawerSubTotal = document.querySelector(this.defaults.cartDrawerSubTotal);
         this.cartDrawerFooter = document.querySelector(this.defaults.cartDrawerFooter);
-        this.cartDrawerClose = document.querySelector(this.defaults.cartDrawerClose);
+        this.cartDrawerClose = document.querySelectorAll(this.defaults.cartDrawerClose);
         this.cartMiniCart = document.querySelector(this.defaults.cartMiniCart);
         this.cartMiniCartContent = document.querySelector(this.defaults.cartMiniCartContent);
         this.cartMiniCartSubTotal = document.querySelector(this.defaults.cartMiniCartSubTotal);
@@ -133,9 +133,11 @@ class GoCart {
         });
 
         if (this.isDrawerMode) {
-            this.cartDrawerClose.addEventListener('click', () => {
-                this.closeCartDrawer();
-                this.closeCartOverlay();
+            this.cartDrawerClose.forEach((item) => {
+                item.addEventListener('click', () => {
+                    this.closeCartDrawer();
+                    this.closeCartOverlay();
+                });
             });
         }
 
